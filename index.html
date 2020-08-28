@@ -5,55 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Roving Tabindex</title>
     <style>
-      radio-btn[aria-checked='true'] {
-        color: red;
-      }
-
-      ex-custom {
-        display: inline-block;
-        width: 3rem;
-        height: 3rem;
-        background-color: #000;
-      }
-
-      ex-custom[disabled] {
-        opacity: 0.5;
-      }
-      f-button {
-        padding: 1rem;
-        box-sizing: border-box;
-        background-color: #888;
-        display: inline-block;
-        cursor: pointer;
-        position: relative;
-        user-select: none;
-        overflow: hidden;
-      }
-
-      .ripple {
-        position: absolute;
-        width: 0%;
-        height: 0%;
-        border-radius: 50%;
-      }
-
-      .run {
-        transform: translate(-50%, -50%);
-        opacity: 0;
-        width: 200%;
-        height: 200%;
-        transition: all 0.3s ease-in-out;
-      }
-
-      .demo div {
-        margin-bottom: 10px;
-      }
-
-      .demo howto-label,
-      .demo howto-checkbox {
-        vertical-align: middle;
-      }
-
       /* ===toggle btn start=== */
       howto-toggle-button {
         background-color: #eee;
@@ -94,101 +45,29 @@
   </head>
   <body>
     <main>
-      <article>
-        <h1>native Elements</h1>
-        <section>
-          <label for="nativ-sel">native select Element</label>
-          <select name="native-sel" id="native-sel">
-            <option value="0">opt one</option>
-            <option value="1">opt two</option>
-            <option value="2">opt three</option>
-          </select>
-        </section>
-
-        <section>
-          <input
-            type="radio"
-            name="native-radio"
-            value="val-one"
-            id="nat-one"
-          />
-          <label for="nat-one">option</label>
-          <input
-            type="radio"
-            name="native-radio"
-            value="val-two"
-            id="nat-two"
-          />
-          <label for="nat-two">option two</label>
-          <input
-            type="radio"
-            name="native-radio"
-            value="val-three"
-            id="nat-three"
-          />
-          <label for="nat-three">option three</label>
-        </section>
-      </article>
-      <br />
-      <hr />
-      <br />
-      <article>
-        <p>
-          Note: usefull links
-          <a
-            href="https://www.w3.org/TR/2019/NOTE-wai-aria-practices-1.1-20190814/#radiobutton"
-            >wcag</a
-          >
-          <a
-            href="https://www.youtube.com/watch?v=uCIC2LNt0bk&list=PLNYkxOF6rcICWx0C9LVWWVqvHlYJyqw7g&index=6"
-            >video</a
-          >
-          <a href="https://goo.gl/9xUH4Y">article</a>
-          <a href="https://github.com/GoogleChromeLabs/howto-components">git</a>
-        </p>
-        <h1>Custom elements</h1>
-        <section>
-          <h2>explore</h2>
-          <ex-custom></ex-custom>
-        </section>
-
-        <section>
-          <h2>Roving index</h2>
-          <h3>Drink Options</h3>
-          <form>
-            <section>
-              <input type="radio" name="n-r" value="v-one" id="n-one" />
-              <label for="n-one">option</label>
-              <input type="radio" name="n-r" value="v-two" id="n-two" />
-              <label for="n-two">option two</label>
-              <input type="radio" name="n-r" value="v-three" id="n-three" />
-              <label for="n-three">option three</label>
-            </section>
-            <radio-group>
-              <radio-btn value="c-1">Water</radio-btn>
-              <radio-btn value="c-2">Coffee</radio-btn>
-              <radio-btn value="c-3">Tea</radio-btn>
-              <radio-btn value="c-4">Cola</radio-btn>
-              <radio-btn value="c-5">Ginger Ale</radio-btn>
-            </radio-group>
-
-            <button>submit</button>
-          </form>
-        </section>
-
-        <f-button>Click me</f-button>
-        <button is="fancy-button">click me navtive</button>
-        <button>click me navtive</button>
-      </article>
+      <p>
+        Note: usefull links
+        <a
+          href="https://www.w3.org/TR/2019/NOTE-wai-aria-practices-1.1-20190814/"
+          >wcag</a
+        >
+        <a
+          href="https://www.youtube.com/watch?v=uCIC2LNt0bk&list=PLNYkxOF6rcICWx0C9LVWWVqvHlYJyqw7g&index=6"
+          >video</a
+        >
+        <a href="https://goo.gl/9xUH4Y">article</a>
+        <a href="https://github.com/GoogleChromeLabs/howto-components">git</a>
+      </p>
       <br />
       <hr />
       <br />
       <section>
-        <label for="ch">dadada</label>
+        <h1>Label and Checkbox</h1>
+        <label for="ch">native label</label>
         <howto-checkbox id="ch"></howto-checkbox>
       </section>
 
-      <section class="demo">
+      <section>
         <div>
           <howto-label for="foo"> Click Me </howto-label>
           <howto-checkbox id="foo"></howto-checkbox>
@@ -203,8 +82,6 @@
 
         <div>
           <howto-label for="bar" id="baz"> Click Me As Well </howto-label>
-          <howto-label> Click Me As Well 2 </howto-label>
-          <howto-label> Click Me As Well 3 </howto-label>
           <howto-checkbox id="bar"></howto-checkbox>
         </div>
 
@@ -214,12 +91,19 @@
             <howto-checkbox howto-label-target></howto-checkbox>
           </howto-label>
         </div>
+        <p>
+          wcag standerds reference
+          <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#checkbox"
+            >checkbox</a
+          >
+        </p>
       </section>
       <br />
       <hr />
       <br />
 
       <section>
+        <h1>Radio group</h1>
         <fieldset>
           <legend>Beverages:</legend>
           <howto-radio-group id="radios">
@@ -228,39 +112,80 @@
             <howto-radio-button>Coffee</howto-radio-button>
           </howto-radio-group>
         </fieldset>
+        <p>
+          wcag standerds reference
+          <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#radiobutton"
+            >radiobutton</a
+          >
+        </p>
       </section>
       <br />
       <hr />
       <br />
 
       <section>
+        <h1>Toggle Button</h1>
         <howto-toggle-button>Press me</howto-toggle-button>
+        <p>
+          wcag standerds reference
+          <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#button"
+            >button</a
+          >
+        </p>
       </section>
       <br />
       <hr />
       <br />
 
-      <section>
+      <section style="max-width: 50rem">
+        <h1>Accordion</h1>
         <howto-accordion>
-          <howto-accordion-heading>Tab 1</howto-accordion-heading>
+          <howto-accordion-heading>Tab 1 </howto-accordion-heading>
           <howto-accordion-panel>Content 1</howto-accordion-panel>
           <howto-accordion-heading>Tab 2</howto-accordion-heading>
           <howto-accordion-panel>Content 2</howto-accordion-panel>
           <howto-accordion-heading>Tab 3</howto-accordion-heading>
           <howto-accordion-panel>Content 3</howto-accordion-panel>
         </howto-accordion>
+        <br />
+        <p>
+          wcag standerds reference
+          <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#accordion"
+            >accordion</a
+          >
+        </p>
+        <br />
       </section>
       <br />
       <hr />
       <br />
+
+      <section>
+        <h1>Tooltip</h1>
+        <div class="text">
+          <label for="name">Your name:</label>
+          <input id="name" aria-describedby="tp1" />
+          <howto-tooltip id="tp1">Ideally your name is Batman</howto-tooltip>
+          <br />
+          <label for="cheese">Favourite type of cheese: </label>
+          <input id="cheese" aria-describedby="tp2" />
+          <howto-tooltip id="tp2"
+            >Help I am trapped inside a tooltip message</howto-tooltip
+          >
+        </div>
+        <p>
+          wcag standerds reference
+          <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#tooltip"
+            >tooltip</a
+          >
+        </p>
+      </section>
     </main>
-    <script src="radio-group.js"></script>
-    <!-- <script src="main.js"></script> -->
-    <!-- <script src="domManipulation.js"></script> -->
     <script src="checkbox/checkbox.js"></script>
     <script src="label/label.js"></script>
     <script src="radio-group/radio-group.js"></script>
     <script src="toggle-btn/toggle-btn.js"></script>
     <script src="accordion/accordion.js"></script>
+    <script src="tooltip/tooltip.js"></script>
   </body>
 </html>
