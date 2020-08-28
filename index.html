@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roving Tabindex</title>
+    <style>
+      radio-btn[aria-checked='true'] {
+        color: red;
+      }
+
+      ex-custom {
+        display: inline-block;
+        width: 3rem;
+        height: 3rem;
+        background-color: #000;
+      }
+
+      ex-custom[disabled] {
+        opacity: 0.5;
+      }
+      f-button {
+        padding: 1rem;
+        box-sizing: border-box;
+        background-color: #888;
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+        user-select: none;
+        overflow: hidden;
+      }
+
+      .ripple {
+        position: absolute;
+        width: 0%;
+        height: 0%;
+        border-radius: 50%;
+      }
+
+      .run {
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        width: 200%;
+        height: 200%;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .demo div {
+        margin-bottom: 10px;
+      }
+
+      .demo howto-label,
+      .demo howto-checkbox {
+        vertical-align: middle;
+      }
+
+      /* ===toggle btn start=== */
+      howto-toggle-button {
+        background-color: #eee;
+        padding: 3px;
+        cursor: default;
+        user-select: none;
+        border: 1px solid #333;
+        border-radius: 3px;
+        transition: background-color 0.2s ease;
+      }
+
+      howto-toggle-button[pressed],
+      howto-toggle-button:not([disabled]):active {
+        background-color: #999;
+      }
+
+      howto-toggle-button[disabled] {
+        opacity: 0.35;
+      }
+      /* ===toggle btn end=== */
+
+      /* ===accordion start=== */
+      /* Headings need a background color so they are not transparent. Otherwise
+  the content will shine through during the animation. */
+      howto-accordion-heading {
+        background-color: white;
+        border: 1px solid black;
+      }
+      howto-accordion-heading[expanded] {
+        background-color: bisque;
+      }
+      howto-accordion-panel {
+        padding: 20px;
+        background-color: lightgray;
+      }
+      /* ===accordion end=== */
+    </style>
+  </head>
+  <body>
+    <main>
+      <article>
+        <h1>native Elements</h1>
+        <section>
+          <label for="nativ-sel">native select Element</label>
+          <select name="native-sel" id="native-sel">
+            <option value="0">opt one</option>
+            <option value="1">opt two</option>
+            <option value="2">opt three</option>
+          </select>
+        </section>
+
+        <section>
+          <input
+            type="radio"
+            name="native-radio"
+            value="val-one"
+            id="nat-one"
+          />
+          <label for="nat-one">option</label>
+          <input
+            type="radio"
+            name="native-radio"
+            value="val-two"
+            id="nat-two"
+          />
+          <label for="nat-two">option two</label>
+          <input
+            type="radio"
+            name="native-radio"
+            value="val-three"
+            id="nat-three"
+          />
+          <label for="nat-three">option three</label>
+        </section>
+      </article>
+      <br />
+      <hr />
+      <br />
+      <article>
+        <p>
+          Note: usefull links
+          <a
+            href="https://www.w3.org/TR/2019/NOTE-wai-aria-practices-1.1-20190814/#radiobutton"
+            >wcag</a
+          >
+          <a
+            href="https://www.youtube.com/watch?v=uCIC2LNt0bk&list=PLNYkxOF6rcICWx0C9LVWWVqvHlYJyqw7g&index=6"
+            >video</a
+          >
+          <a href="https://goo.gl/9xUH4Y">article</a>
+          <a href="https://github.com/GoogleChromeLabs/howto-components">git</a>
+        </p>
+        <h1>Custom elements</h1>
+        <section>
+          <h2>explore</h2>
+          <ex-custom></ex-custom>
+        </section>
+
+        <section>
+          <h2>Roving index</h2>
+          <h3>Drink Options</h3>
+          <form>
+            <section>
+              <input type="radio" name="n-r" value="v-one" id="n-one" />
+              <label for="n-one">option</label>
+              <input type="radio" name="n-r" value="v-two" id="n-two" />
+              <label for="n-two">option two</label>
+              <input type="radio" name="n-r" value="v-three" id="n-three" />
+              <label for="n-three">option three</label>
+            </section>
+            <radio-group>
+              <radio-btn value="c-1">Water</radio-btn>
+              <radio-btn value="c-2">Coffee</radio-btn>
+              <radio-btn value="c-3">Tea</radio-btn>
+              <radio-btn value="c-4">Cola</radio-btn>
+              <radio-btn value="c-5">Ginger Ale</radio-btn>
+            </radio-group>
+
+            <button>submit</button>
+          </form>
+        </section>
+
+        <f-button>Click me</f-button>
+        <button is="fancy-button">click me navtive</button>
+        <button>click me navtive</button>
+      </article>
+      <br />
+      <hr />
+      <br />
+      <section>
+        <label for="ch">dadada</label>
+        <howto-checkbox id="ch"></howto-checkbox>
+      </section>
+
+      <section class="demo">
+        <div>
+          <howto-label for="foo"> Click Me </howto-label>
+          <howto-checkbox id="foo"></howto-checkbox>
+        </div>
+
+        <div>
+          <howto-label>
+            Click Me Too
+            <howto-checkbox></howto-checkbox>
+          </howto-label>
+        </div>
+
+        <div>
+          <howto-label for="bar" id="baz"> Click Me As Well </howto-label>
+          <howto-label> Click Me As Well 2 </howto-label>
+          <howto-label> Click Me As Well 3 </howto-label>
+          <howto-checkbox id="bar"></howto-checkbox>
+        </div>
+
+        <div>
+          <howto-label>
+            <strong>Click Me Last</strong>
+            <howto-checkbox howto-label-target></howto-checkbox>
+          </howto-label>
+        </div>
+      </section>
+      <br />
+      <hr />
+      <br />
+
+      <section>
+        <fieldset>
+          <legend>Beverages:</legend>
+          <howto-radio-group id="radios">
+            <howto-radio-button>Water</howto-radio-button>
+            <howto-radio-button>Soda</howto-radio-button>
+            <howto-radio-button>Coffee</howto-radio-button>
+          </howto-radio-group>
+        </fieldset>
+      </section>
+      <br />
+      <hr />
+      <br />
+
+      <section>
+        <howto-toggle-button>Press me</howto-toggle-button>
+      </section>
+      <br />
+      <hr />
+      <br />
+
+      <section>
+        <howto-accordion>
+          <howto-accordion-heading>Tab 1</howto-accordion-heading>
+          <howto-accordion-panel>Content 1</howto-accordion-panel>
+          <howto-accordion-heading>Tab 2</howto-accordion-heading>
+          <howto-accordion-panel>Content 2</howto-accordion-panel>
+          <howto-accordion-heading>Tab 3</howto-accordion-heading>
+          <howto-accordion-panel>Content 3</howto-accordion-panel>
+        </howto-accordion>
+      </section>
+      <br />
+      <hr />
+      <br />
+    </main>
+    <script src="radio-group.js"></script>
+    <!-- <script src="main.js"></script> -->
+    <!-- <script src="domManipulation.js"></script> -->
+    <script src="checkbox/checkbox.js"></script>
+    <script src="label/label.js"></script>
+    <script src="radio-group/radio-group.js"></script>
+    <script src="toggle-btn/toggle-btn.js"></script>
+    <script src="accordion/accordion.js"></script>
+  </body>
+</html>
