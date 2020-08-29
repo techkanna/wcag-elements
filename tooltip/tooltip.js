@@ -1,4 +1,7 @@
 (function () {
+  const KEYCODE = {
+    ESC: 27,
+  };
   class HowtoTooltip extends HTMLElement {
     /**
      * The constructor does work that needs to be executed _exactly_ once.
@@ -20,7 +23,7 @@
     connectedCallback() {
       if (!this.hasAttribute('role')) this.setAttribute('role', 'tooltip');
 
-      if (!this.hasAttribute('tabindex')) this.setAttribute('tabindex', -1);
+      // if (!this.hasAttribute('tabindex')) this.setAttribute('tabindex', -1);
 
       this._hide();
 
@@ -37,6 +40,7 @@
       this._target.addEventListener('blur', this._hide);
       this._target.addEventListener('mouseenter', this._show);
       this._target.addEventListener('mouseleave', this._hide);
+      this._target.addEventListener('keydown', this._onKeyDown.bind(this));
     }
 
     /**
@@ -52,6 +56,7 @@
       this._target.removeEventListener('blur', this._hide);
       this._target.removeEventListener('mouseenter', this._show);
       this._target.removeEventListener('mouseleave', this._hide);
+      this._target.removeEventListener('keydown', this._onKeyDown.bind(this));
       this._target = null;
     }
 
@@ -61,6 +66,19 @@
 
     _hide() {
       this.hidden = true;
+    }
+
+    _onKeyDown(e) {
+      // Don’t handle modifier shortcuts typically used by assistive technology.
+      if (e.altKey) return;
+      switch (e.keyCode) {
+        case KEYCODE.ESC:
+          this._hide();
+          break;
+
+        default:
+          return;
+      }
     }
   }
 
