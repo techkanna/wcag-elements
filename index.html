@@ -27,8 +27,8 @@
       /* ===toggle btn end=== */
 
       /* ===accordion start=== */
-      /* Headings need a background color so they are not transparent. Otherwise
-  the content will shine through during the animation. */
+      /* Headings need a background color so they are not transparent. Otherwise the content will shine through during the animation. 
+      */
       howto-accordion-heading {
         background-color: white;
         border: 1px solid black;
@@ -41,6 +41,30 @@
         background-color: lightgray;
       }
       /* ===accordion end=== */
+
+      /* ===tap start=== */
+      howto-tab {
+        border: 1px solid black;
+        padding: 20px;
+      }
+      howto-panel {
+        padding: 20px;
+        background-color: lightgray;
+      }
+      howto-tab[selected] {
+        background-color: bisque;
+      }
+
+      /**
+      * If JavaScript does not run, the element will not match `:defined`.
+      * In that case this style adds spacing between tabs and previous panel.
+      */
+      howto-tabs:not(:defined),
+      howto-tab:not(:defined),
+      howto-panel:not(:defined) {
+        display: block;
+      }
+      /* ===tap end=== */
     </style>
   </head>
   <body>
@@ -180,6 +204,27 @@
           >
         </p>
       </section>
+      <br />
+      <hr />
+      <br />
+
+      <section>
+        <h1>Tabs</h1>
+        <howto-tabs>
+          <howto-tab role="heading" slot="tab">Tab 1</howto-tab>
+          <howto-panel role="region" slot="panel">Content 1</howto-panel>
+          <howto-tab role="heading" slot="tab">Tab 2</howto-tab>
+          <howto-panel role="region" slot="panel">Content 2</howto-panel>
+          <howto-tab role="heading" slot="tab">Tab 3</howto-tab>
+          <howto-panel role="region" slot="panel">Content 3</howto-panel>
+        </howto-tabs>
+        <p>
+          wcag standerds reference
+          <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#tabpanel"
+            >tabpanel</a
+          >
+        </p>
+      </section>
     </main>
     <script src="checkbox/checkbox.js"></script>
     <script src="label/label.js"></script>
@@ -187,5 +232,6 @@
     <script src="toggle-btn/toggle-btn.js"></script>
     <script src="accordion/accordion.js"></script>
     <script src="tooltip/tooltip.js"></script>
+    <script src="tabs/tabs.js"></script>
   </body>
 </html>
